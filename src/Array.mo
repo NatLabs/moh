@@ -8,7 +8,6 @@ import BoolModule "./Bool";
 import IterModule "./Iter";
 
 module{
-
     /// Checks if the predicate returns true for all the array values
     ///
     /// #### Examples
