@@ -40,6 +40,6 @@ module {
   /// Iter fns
   public let {
     enumerate; 
-    zip: zipIter
+    zip = zipIter
   } =  IterModule;
 };

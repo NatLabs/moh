@@ -82,7 +82,7 @@ module{
     ///     MoH.repeat("*", 3) // "***"
     /// ```
     public func repeat(text: Text, n: Nat): Text {
-        let arr = Array.tabulate(n, func(_){text});
+        let arr = Array.tabulate<Text>(n, func(_){text});
         Text.join("", arr.vals())
     };
 
