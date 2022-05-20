@@ -4,12 +4,21 @@
   "canisters": {
     "motoko": {
       "type": "motoko",
-      "main": "src/lib.mo"
+      "main": "src/motoko/main.mo"
+    },
+    "motoko_assets": {
+      "type": "assets",
+      "source": [
+        "src/motoko_assets/assets"
+      ],
+      "dependencies": [
+        "motoko"
+      ]
     }
   },
   "defaults": {
     "build": {
-      "packtool": "vessel sources",
+      "packtool": "",
       "args": ""
     }
   },
