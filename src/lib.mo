@@ -29,6 +29,8 @@ module {
   public let {
     percentDecoding;
     percentEncoding;
+    parseInt;
+    parseNat;
     toLowercase; 
     toUppercase;
     repeat;
