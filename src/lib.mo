@@ -4,8 +4,11 @@ import CharModule "./Char";
 import IterModule "./Iter";
 import NatModule "Nat";
 import TextModule "./Text";
+import ConstModule "./Const";
+
 module {
 
+  public let Array = ArrayModule;
   public let {
     any; 
     all; 
@@ -13,19 +16,29 @@ module {
     zip
   } =  ArrayModule;
 
+  public let Bool = BoolModule;
   public let {
     boolToNat
   } = BoolModule;
 
+  public let Char = CharModule;
   public let {
     toLowercase = charToLowercase; 
     toUppercase = charToUppercase;
   } = CharModule;
 
+  public let Const = ConstModule;
+  public let {
+    Nat8_MAX;
+    Nat16_MAX;
+  } = ConstModule;
+
+  public let Nat = NatModule;
   public let {
     isPrime
   } = NatModule;
 
+  public let Text = TextModule;
   public let {
     percentDecoding;
     percentEncoding;
@@ -39,7 +52,7 @@ module {
     lines;
   } = TextModule;
 
-  /// Iter fns
+  public let Iter = IterModule;
   public let {
     enumerate; 
     zip = zipIter

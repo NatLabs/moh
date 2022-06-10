@@ -1,5 +1,6 @@
 import Debug "mo:base/Debug";
 import Iter "mo:base/Iter";
+import Nat "mo:base/Nat";
 
 import ActorSpec "./utils/ActorSpec";
 import MoH "../src";
@@ -28,9 +29,27 @@ let success = run([
                 MoH.any<Nat>(arr, func(x){x < 5}) == true,
             ])
         }),
+        describe("binary_search", [
+            it("Find index of element in array", do {
+                let arr = [1, 2, 3, 4, 5];
+
+                assertAllTrue([
+                    MoH.Array.binary_search<Nat>(arr, 2, Nat.compare) == #ok(1),
+                    MoH.Array.binary_search<Nat>(arr, 5, Nat.compare) == #ok(4)
+                ])
+            }),
+            it("Find the sorted index of an element not in the array" , do {
+                let arr = [1, 5, 8, 10, 25];
+                
+                assertAllTrue([
+                    MoH.Array.binary_search<Nat>(arr, 7, Nat.compare) == #err(2),
+                    MoH.Array.binary_search<Nat>(arr, 30, Nat.compare) == #err(5)
+                ])
+            })
+        ]),
         it("chunks", do {
             let arr = [1, 2, 3, 4, 5];
-            let result =  MoH.chunks<Nat>(arr, 2);
+            let result =  MoH.chunk<Nat>(arr, 2);
 
             Debug.print(debug_show result);
 
@@ -45,7 +64,6 @@ let success = run([
     describe("Iter fns", [
         it("enumerate", do {
             let arr = ['a', 'b', 'c'];
-
             var result = true;
 
             for ((i, v) in MoH.enumerate<Char>(arr.vals())){

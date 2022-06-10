@@ -3,6 +3,8 @@ import Iter "mo:base/Iter";
 import TrieSet "mo:base/TrieSet";
 import Order "mo:base/Order";
 import Hash "mo:base/Hash";
+import Result "mo:base/Result";
+
 
 import BoolModule "./Bool";
 import IterModule "./Iter";
@@ -90,6 +92,41 @@ module{
         };
 
         return minValue
+    };
+
+    /// Binary Search for the specified value in the sorted array
+    /// Return `#ok` with the index of the value if found, 
+    /// `#err` otherwise with the value of the index where the
+    /// value should be inserted
+    ///
+    /// #### Examples
+    /// ```mo
+    ///    var arr = [2, 5, 1, 9, 2, 3];
+    ///    arr:= arrArray.sort(arr);
+    ///    MoH.Array.binary_search(arr, 3, Nat.compare) // #ok(2)
+    /// ```
+    
+    public func binary_search<A>(arr:[A], value: A, cmp: (A, A)-> Order.Order): Result.Result<Nat, Nat> {
+
+        if (arr.size() == 0){
+            return #err(0);
+        };
+
+        var low = 0;
+        var high = arr.size() - 1;
+
+        while (low <= high) {
+            let mid = (low + high) / 2;
+            let midValue = arr[mid];
+
+            switch (cmp(midValue, value) ){
+                case (#less){ low:= mid + 1; };
+                case (#greater){ high:= mid - 1; };
+                case (#equal){ return #ok(mid); };
+            };
+        };
+
+        return #err(low);
     };
 
     /// Returns a new array with only unique values
