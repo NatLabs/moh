@@ -5,7 +5,6 @@ import Order "mo:base/Order";
 import Hash "mo:base/Hash";
 import Result "mo:base/Result";
 
-
 import BoolModule "./Bool";
 import IterModule "./Iter";
 
@@ -14,7 +13,7 @@ module{
     ///
     /// #### Examples
     /// ```mo
-    ///     U.all([1, 2, 3], func(a){ a < 4 }) // true
+    ///     MoH.all([1, 2, 3], func(a){ a < 4 }) // true
     /// ```
     public func all<A>(arr:[A], predicate: (A)-> Bool ): Bool {
         for (n in arr.vals()) {
@@ -43,7 +42,7 @@ module{
     /// 
     /// #### Examples
     /// ```mo
-    ///     U.chunk([1, 2, 3, 4, 5], 2) // [[1, 2], [3, 4], [5]]
+    ///     MoH.chunk([1, 2, 3, 4, 5], 2) // [[1, 2], [3, 4], [5]]
     /// ```
     public func chunk<A>(arr: [A], size: Nat):[[A]]{
         assert size > 0;
