@@ -128,6 +128,10 @@ module{
         return #err(low);
     };
 
+    public func reverse<A>(arr:[A]): [A] {
+        Array.tabulate<A>(arr.size(), func(i){arr[arr.size() - i - 1]})
+    };
+
     /// Returns a new array with only unique values
     public func uniq<A>(arr: [A], hash : A -> Hash.Hash, isEq : (A, A) -> Bool): [A]{
         let trieSet = TrieSet.fromArray<A>(arr, hash, isEq);

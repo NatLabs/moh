@@ -12,6 +12,7 @@ import IntFmt "mo:fmt/Int";
 import NatFmt "mo:fmt/Nat";
 
 import CharModule "./Char";
+import IterModule "./Iter";
 
 module{
     /// Percent encoding for escaping special characters and replacing 
@@ -55,22 +56,27 @@ module{
         ?decodedURI
     };
 
+    /// Pads a given text to the start and end and returns the padded text
     public func pad(text: Text, padText: Text): Text{
         padEnd(padStart(text, padText), padText)
     };
 
+    /// Pads the start of the text with the given padText
     public func padStart(text: Text, padText: Text): Text{
         padText # text
     };
 
+    /// Pads the end of the text with the given padText
     public func padEnd(text: Text, padText: Text): Text{
         text # padText
     };
 
+    /// Parses a given text as a number and returns a signed (Int) number
     public func parseInt(text: Text, base: Nat): Result.Result<Int, Text> {
         IntFmt.Parse(text, base)
     };
 
+    /// Parses a given text as a number and returns an unsigned (Nat) number
     public func parseNat(text: Text, base: Nat): Result.Result<Nat, Text> {
         NatFmt.Parse(text, base)
     };
@@ -81,9 +87,30 @@ module{
     /// ```
     ///     MoH.repeat("*", 3) // "***"
     /// ```
+    
     public func repeat(text: Text, n: Nat): Text {
-        let arr = Array.tabulate<Text>(n, func(_){text});
-        Text.join("", arr.vals())
+        let repeatingIter = IterModule.repeat<Text>(text, n);
+        Text.join("", repeatingIter)
+    };
+
+    /// Reverse a text
+    public func reverse(text: Text): Text {
+        let arr = Iter.toArray<Char>(text.chars());
+
+        var i = arr.size();
+
+        let reversedIter = {
+            next = func(): ?Char{
+                if (i == 0){
+                    null
+                }else{
+                    i := i - 1;
+                    ?arr[i]
+                };
+            };
+        };
+
+        IterModule.toText(reversedIter)
     };
 
     /// Solution by user 'Motokoder' from the dfinity forum
@@ -141,7 +168,7 @@ module{
         return lowercase;
     };
 
-    /// Splits the given text and retrieves all the words in it
+    /// Splits whitespace in the given text and retrieves all the words in it
     public func words(text: Text): Iter.Iter<Text>{
         Text.tokens(text, #char ' ')
     };
@@ -149,12 +176,12 @@ module{
     /// Split the given text at the end of every line
     /// Works for texts that end with '\n', '\r' or '\r\n'
     public func lines(text: Text): Iter.Iter<Text>{
-        let arr = Iter.toArray(Text.split(text, #text("\r\n")));
+        let arr = Iter.toArray(Text.split(text, matchAny("\r\n")));
 
         if (arr.size() > 1){
             arr.vals()
         }else{
-            Text.split(text, matchAny("\r\n"))
+            Text.split(text, #text("\r\n"))
         }
     };
 

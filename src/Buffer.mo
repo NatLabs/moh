@@ -1,14 +1,9 @@
 import Buffer "mo:base/Buffer";
-import Buffer "mo:base/Buffer";
 
 module{
-    public func fromArray<T>(array: [T]): Buffer.Buffer<T>{
-        let buf = Buffer.Buffer<T>(array.size());
-
-        for item in arr.vals(){
-            buf.push(item);
-        };
-
-        buf
+    public func swap<T>(buf: Buffer.Buffer<T>, a: Int, b: Int){
+        let tmp = buf.get(a);
+        buf.put(a, buf.get(b));
+        buf.put(b, tmp);
     };
 }

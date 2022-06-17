@@ -15,9 +15,9 @@ let
 
      For example, if you wanted to use version `v2.0.0` of the foo library:
      let overrides = [
-         { name = "foo"
-         , version = "v2.0.0"
-         , repo = "https://github.com/bar/foo"
+         { name = "base"
+         , version = "main"
+         , repo = "https://github.com/dfinity/motoko-base"
          , dependencies = [] : List Text
          }
      ]
