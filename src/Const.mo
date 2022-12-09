@@ -1,27 +1,50 @@
 import Nat8 "mo:base/Nat8";
 
-module{
-    public let Nat8_MIN: Nat8 = 0;
-    public let Nat8_MAX: Nat8= 0xff;
+module {
+    type Number<A> = {
+        MIN : A;
+        MAX : A;
+    };
 
-    public let Nat16_MIN: Nat16 = 0;
-    public let Nat16_MAX: Nat16 = 0xffff;
+    // todo: add cycles limits
 
-    public let Nat32_MIN: Nat32 = 0;
-    public let Nat32_MAX: Nat32 = 0xffffffff;
+    public let Nat8 : Number<Nat8> = {
+        MIN = 0;
+        MAX = 0xff;
+    };
 
-    public let Nat64_MIN: Nat64 = 0;
-    public let Nat64_MAX: Nat64 = 0xffffffffffffffff;
+    public let Nat16 : Number<Nat16> = {
+        MIN = 0;
+        MAX = 0xffff;
+    };
 
-    public let Int8_MIN: Int8 = -0x80;
-    public let Int8_MAX: Int8 = 0x7f;
+    public let Nat32 : Number<Nat32> = {
+        MIN = 0;
+        MAX = 0xffffffff;
+    };
 
-    public let Int16_MIN: Int16 = -0x8000;
-    public let Int16_MAX: Int16 = 0x7fff;
+    public let Nat64 : Number<Nat64> = {
+        MIN = 0;
+        MAX = 0xffffffffffffffff;
+    };
 
-    public let Int32_MIN: Int32 = -0x80000000;
-    public let Int32_MAX: Int32 = 0x7fffffff;
+    public let Int8 : Number<Int8> = {
+        MIN = -0x80;
+        MAX = 0x7f;
+    };
 
-    public let Int64_MIN: Int64 = -0x8000000000000000;
-    public let Int64_MAX: Int64 = 0x7fffffffffffffff;
-}
+    public let Int16 : Number<Int16> = {
+        MIN = -0x8000;
+        MAX = 0x7fff;
+    };
+
+    public let Int32 : Number<Int32> = {
+        MIN = -0x80000000;
+        MAX = 0x7fffffff;
+    };
+
+    public let Int64 : Number<Int64> = {
+        MIN = -0x8000000000000000;
+        MAX = 0x7fffffffffffffff;
+    };
+};

@@ -1,22 +1,22 @@
 {
-  "version": 1,
-  "dfx": "0.10.0",
-  "canisters": {
-    "motoko": {
-      "type": "motoko",
-      "main": "src/lib.mo"
+    "version": 1,
+    "dfx": "0.12.1",
+    "canisters": {
+        "motoko": {
+            "type": "motoko",
+            "main": "src/lib.mo"
+        }
+    },
+    "defaults": {
+        "build": {
+            "packtool": "vessel sources",
+            "args": ""
+        }
+    },
+    "networks": {
+        "local": {
+            "bind": "127.0.0.1:8000",
+            "type": "ephemeral"
+        }
     }
-  },
-  "defaults": {
-    "build": {
-      "packtool": "vessel sources",
-      "args": ""
-    }
-  },
-  "networks": {
-    "local": {
-      "bind": "127.0.0.1:8000",
-      "type": "ephemeral"
-    }
-  }
 }

@@ -14,3 +14,5 @@
 node_modules/
 dist/
 .vessel
+
+src/Nat.mo

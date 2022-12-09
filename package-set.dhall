@@ -5,24 +5,13 @@ let vessel_package_set =
 let Package =
     { name : Text, version : Text, repo : Text, dependencies : List Text }
 
-let
-  -- This is where you can add your own packages to the package-set
-  additions =
-    [] : List Package
+let additions = [
+    {
+        name = "Itertools",
+        version = "v0.1.0",
+        repo = "https://github.com/NatLabs/Itertools",
+        dependencies = [ "base" ]
+    }
+] : List Package
 
-let
-  {- This is where you can override existing packages in the package-set
-
-     For example, if you wanted to use version `v2.0.0` of the foo library:
-     let overrides = [
-         { name = "base"
-         , version = "main"
-         , repo = "https://github.com/dfinity/motoko-base"
-         , dependencies = [] : List Text
-         }
-     ]
-  -}
-  overrides =
-    [] : List Package
-
-in  aviate_labs # vessel_package_set # overrides
+in  aviate_labs # vessel_package_set # additions
