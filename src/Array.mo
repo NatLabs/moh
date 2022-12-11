@@ -15,7 +15,7 @@ module {
     ///
     /// #### Examples
     /// ```mo
-    ///     MoH.chunk([1, 2, 3, 4, 5], 2) // [[1, 2], [3, 4], [5]]
+    ///     Mo.chunk([1, 2, 3, 4, 5], 2) // [[1, 2], [3, 4], [5]]
     /// ```
     public func chunk<A>(arr : [A], size : Nat) : [[A]] {
         assert size > 0;
@@ -62,7 +62,7 @@ module {
     /// ```mo
     ///    var arr = [2, 5, 1, 9, 2, 3];
     ///    arr:= arrArray.sort(arr);
-    ///    MoH.Array.binary_search(arr, 3, Nat.compare) // #ok(2)
+    ///    Mo.Array.binary_search(arr, 3, Nat.compare) // #ok(2)
     /// ```
     public func binary_search<A>(arr : [A], value : A, cmp : (A, A) -> Order.Order) : Result.Result<Nat, Nat> {
 

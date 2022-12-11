@@ -16,4 +16,9 @@ module {
             j -= 1;
         };
     };
+
+    public func swapRemove<T>(buf : Buffer.Buffer<T>, i : Nat) :?T {
+        swap(buf, i, buf.size() - 1);
+        buf.removeLast();
+    };
 };

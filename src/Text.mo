@@ -1,4 +1,5 @@
 import Array "mo:base/Array";
+import Deque "mo:base/Deque";
 import Char "mo:base/Char";
 import Debug "mo:base/Debug";
 import Iter "mo:base/Iter";
@@ -16,6 +17,7 @@ import ArrayModule "./Array";
 import CharModule "./Char";
 
 import Itertools "mo:Itertools/Iter";
+import Deiter "mo:Itertools/Deiter";
 
 module {
     /// Percent encoding for escaping special characters and replacing
@@ -174,7 +176,7 @@ module {
     ///
     /// #### Examples
     /// ```
-    ///     MoH.repeat("*", 3) // "***"
+    ///     Mo.repeat("*", 3) // "***"
     /// ```
     public func repeat(text : Text, n : Nat) : Text {
         var repeatedText = text;
@@ -271,6 +273,7 @@ module {
 
     /// Module for creating Text Patterns
     public module Match {
+        /// Matches a single character from the given char array
         public func anyChar(charArray : [Char]) : Text.Pattern {
             func pattern(c1 : Char) : Bool {
                 Itertools.any(
@@ -282,22 +285,11 @@ module {
             return #predicate pattern;
         };
 
-        // todo
-        // approach: save the char in iterating chars in reverse order
-        //           the limit of the saved chars should be the max size of the query text
-        //          match each text in reverse and return an positive results
-
-        // public func anyText(textArray : [Text]) : Pattern {
-        //     func pattern(c : Char) : Bool {
-        //         ArrayModule.contains(textArray, c);
-        //     };
-
-        //     return #predicate pattern;
-        // };
-
-        public func anyCharInText(needles : Text) : Text.Pattern {
+        /// Matches any character in the given text
+        /// > Replaces an array of characters in `anyChar` with a single text argument
+        public func anyCharInText(chars : Text) : Text.Pattern {
             func pattern(c : Char) : Bool {
-                Text.contains(needles, #char c);
+                Text.contains(chars, #char c);
             };
 
             return #predicate pattern;
