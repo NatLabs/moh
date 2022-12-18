@@ -7,7 +7,7 @@ let Package =
 
 let additions = [
     {
-        name = "Itertools",
+        name = "itertools",
         version = "v0.1.0",
         repo = "https://github.com/NatLabs/Itertools",
         dependencies = [ "base" ]

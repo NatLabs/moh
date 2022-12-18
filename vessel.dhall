@@ -1,4 +1,4 @@
 {
-  dependencies = [ "base", "encoding", "fmt", "Itertools" ],
+  dependencies = [ "base", "encoding", "fmt", "itertools" ],
   compiler = Some "0.6.27"
 }

@@ -9,7 +9,7 @@ module {
 
     public func reverse<T>(buf : Buffer.Buffer<T>) {
         var i = 0;
-        var j = buf.size() - 1;
+        var j = (buf.size() - 1) : Nat;
         while (i < j) {
             swap(buf, i, j);
             i += 1;
@@ -17,8 +17,8 @@ module {
         };
     };
 
-    public func swapRemove<T>(buf : Buffer.Buffer<T>, i : Nat) :?T {
-        swap(buf, i, buf.size() - 1);
+    public func swapRemove<T>(buf : Buffer.Buffer<T>, i : Nat) : ?T {
+        swap(buf, i, (buf.size() - 1) : Nat);
         buf.removeLast();
     };
 };

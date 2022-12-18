@@ -10,8 +10,6 @@ import Result "mo:base/Result";
 import Text "mo:base/Text";
 
 import Hex "mo:encoding/Hex";
-import IntFmt "mo:fmt/Int";
-import NatFmt "mo:fmt/Nat";
 
 import ArrayModule "./Array";
 import CharModule "./Char";
@@ -160,18 +158,6 @@ module {
         text # padText;
     };
 
-    /// Parses a given text as a number and returns a signed (Int) number
-    public func parseInt(text : Text, base : Nat) : Result.Result<Int, Text> {
-        IntFmt.Parse(text, base);
-    };
-
-    /// Parses a given text as a number and returns an unsigned (Nat) number
-    public func parseNat(text : Text, base : Nat) : Result.Result<Nat, Text> {
-        NatFmt.Parse(text, base);
-    };
-
-    // todo: parseFloat, parseNumber() -> #Float, #Nat, #Int
-
     /// Repeat a specified text `n` number of times
     ///
     /// #### Examples
@@ -230,6 +216,20 @@ module {
         };
 
         result;
+    };
+
+    public func stripStart(text : Text, prefix : Text.Pattern) : Text {
+        switch (Text.stripStart(text, prefix)) {
+            case (?t) t;
+            case (_) text;
+        };
+    };
+
+    public func stripEnd(text : Text, suffix : Text.Pattern) : Text {
+        switch (Text.stripEnd(text, suffix)) {
+            case (?t) t;
+            case (_) text;
+        };
     };
 
     /// Converts all the characters to lowercase
