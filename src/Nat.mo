@@ -1,3 +1,4 @@
+import Debug "mo:base/Debug";
 import Float "mo:base/Float";
 import Iter "mo:base/Iter";
 import Char "mo:base/Char";
@@ -52,7 +53,21 @@ module {
         ArrayModule.reverse<Nat8>(toBigEndian(n));
     };
 
-    public func fromText(text : Text) : ?Nat {
+    public func fromText(text : Text) : Nat {
+        var n : Nat = 0;
+
+        for (c in text.chars()) {
+            if (Char.isDigit(c)) {
+                n := n * 10 + Nat32.toNat(Char.toNat32(c) - Char.toNat32('0'));
+            } else {
+                Debug.trap("Invalid character in number: " # Char.toText(c));
+            };
+        };
+
+        return n;
+    };
+
+    public func parse(text : Text) : ?Nat {
         var n : Nat = 0;
 
         for (c in text.chars()) {

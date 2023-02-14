@@ -7,7 +7,6 @@ module {
     };
 
     // todo: add cycles limits
-
     public let Nat8 : Number<Nat8> = {
         MIN = 0;
         MAX = 0xff;

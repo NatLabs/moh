@@ -16,15 +16,34 @@ module {
 
     // todo: parse scientific notation (e.g. 1.23e-4)
 
-    public func fromText(t : Text) : ?Float {
+    public func fromText(t : Text) : Float {
         let arr = Iter.toArray(Text.split(t, #text "."));
 
-        let number = switch (IntModule.fromText(arr[0])) {
+        let n = IntModule.fromText(arr[0]);
+        let number = Float.fromInt(n);
+
+        let d = IntModule.fromText(arr[1]);
+
+        let decimals = Float.fromInt(d) / Float.fromInt(10 ** arr[1].size());
+
+        let isNegative = number < 0;
+
+        if (isNegative) {
+            number - decimals;
+        } else {
+            number + decimals;
+        };
+    };
+
+    public func parse(t : Text) : ?Float {
+        let arr = Iter.toArray(Text.split(t, #text "."));
+
+        let number = switch (IntModule.parse(arr[0])) {
             case (?n) Float.fromInt(n);
             case (null) return null;
         };
 
-        let decimals = switch (IntModule.fromText(arr[1])) {
+        let decimals = switch (IntModule.parse(arr[1])) {
             case (?d) Float.fromInt(d) / Float.fromInt(10 ** arr[1].size());
             case (null) return null;
         };

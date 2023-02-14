@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "dfx": "0.12.1",
+    "dfx": "0.13.0",
     "canisters": {
         "motoko": {
             "type": "motoko",
@@ -9,7 +9,7 @@
     },
     "defaults": {
         "build": {
-            "packtool": "vessel sources",
+            "packtool": "mops sources",
             "args": ""
         }
     },

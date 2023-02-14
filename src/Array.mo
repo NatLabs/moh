@@ -71,7 +71,7 @@ module {
         };
 
         var low = 0;
-        var high = arr.size() - 1;
+        var high = (arr.size() - 1) : Nat;
 
         while (low <= high) {
             let mid = (low + high) / 2;

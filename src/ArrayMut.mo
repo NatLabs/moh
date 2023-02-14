@@ -7,7 +7,7 @@ module {
 
     public func reverse<T>(arr : [var T]) {
         var i = 0;
-        var j = arr.size() - 1;
+        var j = (arr.size() - 1) : Nat;
 
         while (i < j) {
             swap(arr, i, j);

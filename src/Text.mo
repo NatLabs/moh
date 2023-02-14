@@ -2,6 +2,7 @@ import Array "mo:base/Array";
 import Deque "mo:base/Deque";
 import Char "mo:base/Char";
 import Debug "mo:base/Debug";
+import Func "mo:base/Func";
 import Iter "mo:base/Iter";
 import Nat32 "mo:base/Nat32";
 import Nat8 "mo:base/Nat8";
@@ -14,8 +15,8 @@ import Hex "mo:encoding/Hex";
 import ArrayModule "./Array";
 import CharModule "./Char";
 
-import Itertools "mo:Itertools/Iter";
-import Deiter "mo:Itertools/Deiter";
+import Itertools "mo:itertools/Iter";
+import Deiter "mo:itertools/Deiter";
 
 module {
     /// Percent encoding for escaping special characters and replacing
@@ -234,24 +235,12 @@ module {
 
     /// Converts all the characters to lowercase
     public func toLowercase(text : Text) : Text {
-        var lowercase = "";
-
-        for (c in text.chars()) {
-            lowercase := lowercase # Char.toText(CharModule.toLowercase(c));
-        };
-
-        return lowercase;
+        Text.map(text, CharModule.toLowercase);
     };
 
     /// Converts all the characters to uppercase
     public func toUppercase(text : Text) : Text {
-        var lowercase = "";
-
-        for (c in text.chars()) {
-            lowercase := lowercase # Char.toText(CharModule.toUppercase(c));
-        };
-
-        return lowercase;
+        Text.map(text, CharModule.toUppercase);
     };
 
     /// Splits whitespace in the given text and retrieves all the words in it
