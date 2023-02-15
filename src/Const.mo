@@ -46,8 +46,4 @@ module {
         MIN = -0x8000000000000000;
         MAX = 0x7fffffffffffffff;
     };
-
-    public module Cycles {
-        public let CREATE_CANISTER = 100_000_000_000;
-    };
 };

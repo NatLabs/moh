@@ -1,29 +1,37 @@
 import ArrayModule "Array";
 import ArrayMutModule "Array";
-import BoolModule "./Bool";
-import CharModule "./Char";
-import TextModule "./Text";
-import ConstModule "./Const";
-import DebugModule "./Debug";
-import FloatModule "./Float";
-import IntModule "./Int";
-import ListModule "./List";
-import NatModule "./Nat";
-import Nat32Module "./Nat32";
-
+import BoolModule "Bool";
+import BufferModule "Buffer";
+import CharModule "Char";
+import TextModule "Text";
+import ConstModule "Const";
+import CyclesModule "Cycles";
+import DebugModule "Debug";
+import FloatModule "Float";
+import IntModule "Int";
+import ListModule "List";
+import NatModule "Nat";
+import Nat8Module "Nat8";
+import Nat16Module "Nat16";
+import Nat32Module "Nat32";
+import Nat64Module "Nat64";
 
 module {
   public let Array = ArrayModule;
   public let ArrayMut = ArrayMutModule;
   public let Bool = BoolModule;
+  public let Buffer = BufferModule;
   public let Char = CharModule;
   public let Const = ConstModule;
+  public let Cycles = CyclesModule;
   public let Debug = DebugModule;
   public let Float = FloatModule;
   public let Int = IntModule;
   public let List = ListModule;
   public let Nat = NatModule;
+  public let Nat8 = Nat8Module;
+  public let Nat16 = Nat16Module;
   public let Nat32 = Nat32Module;
+  public let Nat64 = Nat64Module;
   public let Text = TextModule;
-
 };
