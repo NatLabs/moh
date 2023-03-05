@@ -1,3 +1,4 @@
+import Array "mo:base/Array";
 import Debug "mo:base/Debug";
 import Float "mo:base/Float";
 import Iter "mo:base/Iter";
@@ -24,33 +25,35 @@ module {
         return n > 1;
     };
 
-    public func toBigEndian(n : Nat) : [Nat8] {
-        let n64 = Nat64.fromNat(n);
+    public func fromBytes(bytes : [Nat8]) : Nat {
+        var n : Nat = 0;
 
-        var n_bytes : Nat64 = if (n < 0x80) {
-            1;
-        } else if (n < 0x8000) {
-            2;
-        } else if (n < 0x80000000) {
-            3;
-        } else {
-            4;
+        for (b in bytes.vals()) {
+            n := (n * 256) + Nat8.toNat(b);
         };
 
-        let buf = Buffer.Buffer<Nat8>(Nat64.toNat(n_bytes));
-
-        while (n_bytes > 0) {
-            n_bytes -= 1;
-            let b = (n64 >> (n_bytes * 8)) & 0xff;
-            let byte = Nat8.fromNat(Nat64.toNat(b));
-            buf.add(byte);
-        };
-
-        return Buffer.toArray(buf);
+        return n;
     };
 
-    public func toLittleEndian(n : Nat) : [Nat8] {
-        ArrayModule.reverse<Nat8>(toBigEndian(n));
+    public func toBytes(num : Nat, nbytes: Nat): [Nat8]{
+        var n = num;
+
+        Array.tabulate(
+            nbytes,
+            func (_: Nat) : Nat8 {
+                if ( n == 0) {
+                    return 0;
+                };
+
+                let byte = Nat8.fromNat(n % 256);
+                n /= 256;
+                byte
+            }
+        )
+    };
+
+    public func toLeBytes(n : Nat, nbytes: Nat) : [Nat8] {
+        ArrayModule.reverse<Nat8>(toBytes(n, nbytes));
     };
 
     public func fromText(text : Text) : Nat {

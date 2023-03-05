@@ -14,6 +14,14 @@ module Nat32Module {
         Option.map(NatModule.parse(text), Nat32.fromNat);
     };
 
+    public func toBytes(n : Nat32) : [Nat8] {
+        NatModule.toBytes(Nat32.toNat(n), 4);
+    };
+
+    public func toLeBytes(n: Nat32) : [Nat8] {
+        NatModule.toLeBytes(Nat32.toNat(n), 4);
+    };
+
     public func toNat8(x : Nat32) : Nat8 {
         Nat8.fromNat(Nat32.toNat(x));
     };

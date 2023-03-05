@@ -16,8 +16,8 @@ module{
     };
 
     public func fromHex(raw_hex : Text): Blob{
-        let hex = Text.replace(raw_hex, #text("\\"), "");
-
+        let hex = Text.replace(raw_hex, Match.anyChar(['\"', '\\']), "");
+        
         let size = hex.size();
 
         if (size % 2 != 0) {

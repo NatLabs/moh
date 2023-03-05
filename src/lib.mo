@@ -15,6 +15,7 @@ import Nat8Module "Nat8";
 import Nat16Module "Nat16";
 import Nat32Module "Nat32";
 import Nat64Module "Nat64";
+import PrincipalModule "Principal";
 
 module {
   public let Array = ArrayModule;
@@ -34,4 +35,5 @@ module {
   public let Nat32 = Nat32Module;
   public let Nat64 = Nat64Module;
   public let Text = TextModule;
+  public let Principal = PrincipalModule;
 };
