@@ -13,4 +13,9 @@ module Nat8Module {
         Option.map(NatModule.parse(text), Nat8.fromNat);
     };
 
+    public func divCeil(num : Nat8, divisor : Nat8) : Nat8 {
+        num + (num - 1) / divisor;
+    };
+
+    // Conversions
 };

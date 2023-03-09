@@ -36,6 +36,10 @@ module {
     };
 
     public func toBytes(num : Nat, nbytes: Nat): [Nat8]{
+        ArrayModule.reverse<Nat8>(toBytes(num, nbytes));
+    };
+
+    public func toLeBytes(num : Nat, nbytes: Nat) : [Nat8] {
         var n = num;
 
         Array.tabulate(
@@ -50,10 +54,6 @@ module {
                 byte
             }
         )
-    };
-
-    public func toLeBytes(n : Nat, nbytes: Nat) : [Nat8] {
-        ArrayModule.reverse<Nat8>(toBytes(n, nbytes));
     };
 
     public func fromText(text : Text) : Nat {
@@ -82,6 +82,10 @@ module {
         };
 
         return ?n;
+    };
+
+    public func divCeil(num : Nat, divisor : Nat) : Nat {
+        num + (num - 1) / divisor;
     };
 
 };

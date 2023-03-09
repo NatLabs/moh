@@ -26,5 +26,8 @@ module Nat16Module {
         Nat8.fromNat(Nat16.toNat(x));
     };
 
+    public func divCeil(num : Nat16, divisor : Nat16) : Nat16 {
+        num + (num - 1) / divisor;
+    };
 
 };

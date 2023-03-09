@@ -25,4 +25,8 @@ module Nat32Module {
     public func toNat8(x : Nat32) : Nat8 {
         Nat8.fromNat(Nat32.toNat(x));
     };
+
+    public func divCeil(num : Nat32, divisor : Nat32) : Nat32 {
+        num + (num - 1) / divisor;
+    };
 };
