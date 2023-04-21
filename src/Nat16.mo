@@ -1,6 +1,8 @@
 import Option "mo:base/Option";
 import Nat8 "mo:base/Nat8";
 import Nat16 "mo:base/Nat16";
+import Nat32 "mo:base/Nat32";
+import Nat64 "mo:base/Nat64";
 
 import NatModule "Nat";
 
@@ -12,6 +14,10 @@ module Nat16Module {
 
     public func parse(text : Text) : ?Nat16 {
         Option.map(NatModule.parse(text), Nat16.fromNat);
+    };
+
+    public func divCeil(num : Nat16, divisor : Nat16) : Nat16 {
+        num + (num - 1) / divisor;
     };
 
     public func toBytes(n : Nat16) : [Nat8] {
@@ -26,8 +32,12 @@ module Nat16Module {
         Nat8.fromNat(Nat16.toNat(x));
     };
 
-    public func divCeil(num : Nat16, divisor : Nat16) : Nat16 {
-        num + (num - 1) / divisor;
+    public func toNat32(x : Nat16) : Nat32 {
+        Nat32.fromNat(Nat16.toNat(x));
+    };
+
+    public func toNat64(x : Nat16) : Nat64 {
+        Nat64.fromNat(Nat16.toNat(x));
     };
 
 };

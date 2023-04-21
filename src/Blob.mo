@@ -1,5 +1,6 @@
 import Array "mo:base/Array";
 import Blob "mo:base/Blob";
+import Buffer "mo:base/Buffer";
 import Char "mo:base/Char";
 import Debug "mo:base/Debug";
 import Text "mo:base/Text";
@@ -32,5 +33,15 @@ module{
         };
 
         Blob.fromArray(Array.freeze(arr));
+    };
+
+    public func toBuffer(blob: Blob): Buffer.Buffer<Nat8>{
+        let buffer = Buffer.Buffer<Nat8>(blob.size());
+        
+        for (byte in blob.vals()){
+            buffer.add(byte);
+        };
+
+        buffer;
     };
 };

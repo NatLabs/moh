@@ -1,6 +1,8 @@
 import Option "mo:base/Option";
 import Nat8 "mo:base/Nat8";
+import Nat16 "mo:base/Nat16";
 import Nat32 "mo:base/Nat32";
+import Nat64 "mo:base/Nat64";
 
 import NatModule "Nat";
 
@@ -22,11 +24,19 @@ module Nat32Module {
         NatModule.toLeBytes(Nat32.toNat(n), 4);
     };
 
+    public func divCeil(num : Nat32, divisor : Nat32) : Nat32 {
+        num + (num - 1) / divisor;
+    };
+
     public func toNat8(x : Nat32) : Nat8 {
         Nat8.fromNat(Nat32.toNat(x));
     };
 
-    public func divCeil(num : Nat32, divisor : Nat32) : Nat32 {
-        num + (num - 1) / divisor;
+    public func toNat16(x : Nat32) : Nat16 {
+        Nat16.fromNat(Nat32.toNat(x));
+    };
+
+    public func toNat64(x : Nat32) : Nat64 {
+        Nat64.fromNat(Nat32.toNat(x));
     };
 };
