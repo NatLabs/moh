@@ -1,8 +1,10 @@
 import Char "mo:base/Char";
 import Nat32 "mo:base/Nat32";
 
+import Nat8Module "Nat8";
 import Nat16Module "Nat16";
 import Nat32Module "Nat32";
+import Nat64Module "Nat64";
 
 module {
 
@@ -57,6 +59,21 @@ module {
         let digit = charCode - Char.toNat32('a') + 10;
 
         return Nat32Module.toNat8(digit);
+    };
+
+    public func fromNat8(n: Nat8) : Char {
+        let n32 = Nat8Module.toNat32(n);
+        Char.fromNat32(n32);
+    };
+
+    public func fromNat16(n: Nat16) : Char {
+        let n32 = Nat16Module.toNat32(n);
+        Char.fromNat32(n32);
+    };
+
+    public func fromNat64(n: Nat64) : Char {
+        let n32 = Nat64Module.toNat32(n);
+        Char.fromNat32(n32);
     };
 
     public func toNat8(char : Char) : Nat8 {
