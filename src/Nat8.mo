@@ -8,6 +8,9 @@ import NatModule "Nat";
 
 module Nat8Module {
 
+    public let MIN : Nat8 = 0;
+    public let MAX : Nat8 = 0xff;
+
     public func fromText(text : Text) : Nat8 {
         Nat8.fromNat(NatModule.fromText(text));
     };
@@ -17,7 +20,7 @@ module Nat8Module {
     };
 
     public func divCeil(num : Nat8, divisor : Nat8) : Nat8 {
-        num + (num - 1) / divisor;
+        (num + (divisor - 1)) / divisor;
     };
 
     // Conversions

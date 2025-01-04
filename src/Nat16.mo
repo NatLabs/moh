@@ -7,6 +7,8 @@ import Nat64 "mo:base/Nat64";
 import NatModule "Nat";
 
 module Nat16Module {
+    public let MIN : Nat16 = 0;
+    public let MAX : Nat16 = 0xffff;
 
     public func fromText(text : Text) : Nat16 {
         Nat16.fromNat(NatModule.fromText(text));
@@ -17,7 +19,7 @@ module Nat16Module {
     };
 
     public func divCeil(num : Nat16, divisor : Nat16) : Nat16 {
-        num + (num - 1) / divisor;
+        (num + (divisor - 1)) / divisor;
     };
 
     public func toBytes(n : Nat16) : [Nat8] {

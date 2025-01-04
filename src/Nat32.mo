@@ -8,6 +8,9 @@ import NatModule "Nat";
 
 module Nat32Module {
 
+    public let MIN : Nat32 = 0;
+    public let MAX : Nat32 = 0xffffffff;
+
     public func fromText(text : Text) : Nat32 {
         Nat32.fromNat(NatModule.fromText(text));
     };
@@ -25,7 +28,7 @@ module Nat32Module {
     };
 
     public func divCeil(num : Nat32, divisor : Nat32) : Nat32 {
-        num + (num - 1) / divisor;
+        (num + (divisor - 1)) / divisor;
     };
 
     public func toNat8(x : Nat32) : Nat8 {

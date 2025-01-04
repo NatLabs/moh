@@ -9,7 +9,6 @@ import Nat8 "mo:base/Nat8";
 import Buffer "mo:base/Buffer";
 
 import ArrayModule "Array";
-import Conversion "Conversion";
 
 module {
     public func isPrime(n : Nat) : Bool {
@@ -85,7 +84,7 @@ module {
     };
 
     public func divCeil(num : Nat, divisor : Nat) : Nat {
-        num + (num - 1) / divisor;
+        (num + (divisor - 1)) / divisor;
     };
 
 };

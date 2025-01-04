@@ -5,9 +5,17 @@ import Order "mo:base/Order";
 import Hash "mo:base/Hash";
 import Result "mo:base/Result";
 import Int "mo:base/Int";
+import Debug "mo:base/Debug";
+
 import BoolModule "./Bool";
 
 module {
+
+    type Iter<A> = Iter.Iter<A>;
+
+    public func clone<A>(arr : [A]) : [A] {
+        Array.tabulate<A>(arr.size(), func(i) { arr[i] });
+    };
 
     /// Splits the array into chunks of specified `size`. If the
     /// array is not evenly divisible by the specified chunk size
@@ -87,12 +95,23 @@ module {
         return #err(low);
     };
 
+    public func range<A>(arr: [A], start : Nat, len : Nat) : Iter<A> {
+        if (start >= arr.size() or start + len > arr.size()) {
+            Debug.trap("Mo.Array range(): index out of bounds");
+        };
+
+        Iter.map(
+            Iter.range(start + 1, start + len),
+            func(i: Nat) : A = arr.get(i)
+        )
+    };
+    
     public func reverse<A>(arr : [A]) : [A] {
         Array.tabulate<A>(arr.size(), func(i) { arr[arr.size() - i - 1] });
     };
 
     /// Returns a new array with only unique values
-    public func uniq<A>(arr : [A], hash : A -> Hash.Hash, isEq : (A, A) -> Bool) : [A] {
+    public func unique<A>(arr : [A], hash : A -> Hash.Hash, isEq : (A, A) -> Bool) : [A] {
         let trieSet = TrieSet.fromArray<A>(arr, hash, isEq);
         TrieSet.toArray<A>(trieSet);
     };

@@ -76,6 +76,10 @@ module {
         deque;
     };
 
+    // public func range<A>(dq: Deque.Deque<A>, start: Nat, len: Nat) : Iter.Iter<A> {
+        
+    // };
+
     public func toIter<A>(deque : Deque.Deque<A>) : Iter.Iter<A> {
         var iter = deque;
 

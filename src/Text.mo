@@ -260,6 +260,17 @@ module {
         };
     };
 
+    public func isNumber(text : Text) : Bool {
+
+        for (c in text.chars()) {
+            if (not Char.isDigit(c) and c != '_') {
+                return false;
+            };
+        };
+
+        true;
+    };
+
     /// Module for creating Text Patterns
     public module Match {
         /// Matches a single character from the given char array

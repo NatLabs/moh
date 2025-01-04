@@ -9,7 +9,6 @@ import CyclesModule "Cycles";
 import DebugModule "Debug";
 import FloatModule "Float";
 import IntModule "Int";
-import ListModule "List";
 import NatModule "Nat";
 import Nat8Module "Nat8";
 import Nat16Module "Nat16";
@@ -28,7 +27,6 @@ module {
   public let Debug = DebugModule;
   public let Float = FloatModule;
   public let Int = IntModule;
-  public let List = ListModule;
   public let Nat = NatModule;
   public let Nat8 = Nat8Module;
   public let Nat16 = Nat16Module;
