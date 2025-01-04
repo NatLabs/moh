@@ -271,6 +271,21 @@ module {
         true;
     };
 
+    public func toNat(text : Text) : Nat {
+        var n : Nat = 0;
+
+        label extracting_nat for (c in text.chars()) {
+            if (c == '_') continue extracting_nat else if (not Char.isDigit(c)) {
+                Debug.trap("Text.toNat: Invalid number format");
+            };
+
+            n := (n * 10) + Nat32.toNat(Char.toNat32(c) - Char.toNat32('0'));
+        };
+
+        n
+
+    };
+
     /// Module for creating Text Patterns
     public module Match {
         /// Matches a single character from the given char array
