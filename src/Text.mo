@@ -15,9 +15,6 @@ import Hex "mo:encoding/Hex";
 import ArrayModule "./Array";
 import CharModule "./Char";
 
-import Itertools "mo:itertools/Iter";
-import Deiter "mo:itertools/Deiter";
-
 module {
     /// Percent encoding for escaping special characters and replacing
     /// them with their hex value and the percent symbol as a prefix - `%xx`
@@ -291,10 +288,12 @@ module {
         /// Matches a single character from the given char array
         public func anyChar(charArray : [Char]) : Text.Pattern {
             func pattern(c1 : Char) : Bool {
-                Itertools.any(
-                    charArray.vals(),
-                    func(c2 : Char) : Bool { c1 == c2 },
-                );
+                for (c2 in charArray.vals()) {
+                    if (c1 == c2) {
+                        return true;
+                    };
+                };
+                false;
             };
 
             return #predicate pattern;

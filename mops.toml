@@ -2,4 +2,3 @@
 base = "0.8.1"
 encoding = "https://github.com/aviate-labs/encoding.mo#v0.3.2"
 fmt = "https://github.com/aviate-labs/fmt.mo#v0.1.0"
-itertools = "0.1.1"
