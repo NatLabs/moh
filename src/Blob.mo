@@ -7,6 +7,7 @@ import Text "mo:base/Text";
 
 import CharModule "Char";
 import { Match } "Text";
+import It "mo:itertools/Iter";
 
 module {
     public func toHex(blob : Blob) : Text {
